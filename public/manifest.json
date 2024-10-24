@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Contextualize",
+  "version": "1.0.0",
+  "description": "Get a short summary of a webpage using artificial intelligence",
+  "action": {
+    "default_popup": "index.html"
+  },
+  "permissions": [
+    "scripting",
+    "activeTab"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "contentScript.js"
+      ]
+    }
+  ]
+}
