@@ -29,7 +29,7 @@ function App() {
             let content = parsed.querySelector("main") ?? parsed.querySelector('[role="main"]');
             if (content === null) {
               // Look for article instead
-              content = parsed.querySelector("article") || parsed.querySelector('[role="article"]');
+              content = parsed.querySelector("article") ?? parsed.querySelector('[role="article"]');
               if (content === null) {
                 setError("Sivulta ei löytynyt main- tai article-tagia.")
                 return;
