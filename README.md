@@ -1,3 +1,5 @@
+![GitHub Latest Release)](https://img.shields.io/github/v/release/tatupesonen/contextualize?logo=github)
+
 # Contextualize
 A tool for quickly summarizing the contents of a website.
 
