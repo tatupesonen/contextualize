@@ -20,6 +20,7 @@ export default defineConfig({
       input: {
         main: './index.html',
         contentScript: './src/contentScript.ts', 
+        background: "./src/background.ts"
       },
       output: {
         entryFileNames: '[name].js', // Keep file names clear (popup.js, background.js)
