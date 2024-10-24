@@ -1,4 +1,5 @@
-![GitHub Latest Release)](https://img.shields.io/github/v/release/tatupesonen/contextualize?logo=github)
+[<img src="https://img.shields.io/github/v/release/tatupesonen/contextualize?logo=github">](https://github.com/tatupesonen/contextualize/releases/latest)
+[![Deploy Chrome Extension](https://github.com/tatupesonen/contextualize/actions/workflows/deploy.yml/badge.svg)](https://github.com/tatupesonen/contextualize/actions/workflows/deploy.yml)
 
 # Contextualize
 A tool for quickly summarizing the contents of a website.
