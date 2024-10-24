@@ -1,0 +1,51 @@
+name: Deploy Chrome Extension
+
+on:
+  push:
+    tags:
+      - 'v*'  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'  
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build extension
+        run: npm run build
+
+      - name: Zip the extension
+        run: zip -r contextualize.zip ./build
+
+      - name: Create GitHub release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}  
+          draft: false
+          prerelease: false
+
+      - name: Extract version
+        id: extract_version
+        run: echo "VERSION=${GITHUB_REF##*/}" >> $GITHUB_ENV
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./contextualize.zip
+          asset_name: contextualize-${{ env.VERSION }}.zip
+          asset_content_type: application/zip
